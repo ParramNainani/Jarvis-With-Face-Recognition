@@ -8,16 +8,20 @@ import numpy as np
 import time
 import os
 from datetime import datetime
+
+## MODULES
+
+
 n=0
-def voice():
+def voice(): ## TO SETUP THE VOICE 
     import datetime
     engine = pyttsx3.init('sapi5')
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)
+    engine.setProperty('voice', voices[0].id) ## CHANGE THE NUMBER TO CHANGE THE VOICE
     def speak(audio):
         engine.say(audio)
         engine.runAndWait()
-    def wishme():
+    def wishme(): ## USED FOR A WISHING EFFECT MORNING , AFTERNOON OR EVENING
         hour = int(datetime.datetime.now().hour)
         if hour>= 0 or hour<12 :
             speak("Good Morning")
@@ -27,7 +31,7 @@ def voice():
             speak("Good evening")
         speak("Hi Mr. Param Nainani , What's good")
 
-    def takeCommand():
+    def takeCommand():## FOR RECOGNIZING WHAT THE PERSON IS SAYING 
         r=sr.Recognizer()
         with sr.Microphone() as source:
             print("Listening...")
@@ -46,7 +50,7 @@ def voice():
         wishme()
 
         while True:
-            query = takeCommand()
+            query = takeCommand() ## IMP STEP TO ASSIGN WHAT THE USER IS SAYING TO A VARIABLE NAMED QUERY
 
             if 'who is' in query:
                 speak("Searching wikipedia...")
@@ -87,7 +91,7 @@ def voice():
                 print("Good to know sir")
             else:
                 print("uh huh")
-def face():
+def face(): 
     global n
     path = r"C:\Users\Param Nainani\OneDrive\Documents\ImagesAttendence"
     images = []
